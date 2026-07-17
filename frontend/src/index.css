@@ -1,0 +1,264 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Outfit', system-ui, sans-serif;
+  --font-display: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+  --color-deep: #071428;
+  --color-primary: #0B3D91;
+  --color-secondary: #0F2E6B;
+  --color-sky: #1A6FBF;
+  --color-gold: #C9A227;
+  --color-gold-light: #E8C547;
+  --color-surface: #E8F1FB;
+  --color-card: #FFFFFF;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.55;
+  letter-spacing: 0.01em;
+  background: #E8F1FB;
+  color: #0f172a;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  color: #0B3D91;
+}
+
+.page-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2vw, 1.85rem);
+  font-weight: 600;
+  color: #0B3D91;
+  letter-spacing: -0.02em;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #0B3D91;
+  letter-spacing: -0.01em;
+}
+
+.label-text {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #64748b;
+}
+
+::selection {
+  background: rgba(11, 61, 145, 0.25);
+  color: #0f172a;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #0B3D91 0%, #1A6FBF 45%, #C9A227 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(11, 61, 145, 0.1);
+  box-shadow: 0 4px 24px rgba(11, 61, 145, 0.08);
+  position: relative;
+  z-index: 1;
+}
+
+.glass-hover:hover {
+  background: #fff;
+  border-color: rgba(201, 162, 39, 0.4);
+  box-shadow: 0 8px 28px rgba(11, 61, 145, 0.12);
+}
+
+/* NEMSU sky-blue base + white + soft gold accents + logo watermark layer */
+.mesh-bg {
+  position: relative;
+  background:
+    radial-gradient(ellipse 90% 55% at 10% -10%, rgba(11, 61, 145, 0.28), transparent 55%),
+    radial-gradient(ellipse 70% 50% at 100% 0%, rgba(201, 162, 39, 0.2), transparent 50%),
+    radial-gradient(ellipse 60% 45% at 80% 100%, rgba(26, 111, 191, 0.15), transparent 55%),
+    radial-gradient(ellipse 50% 40% at 0% 80%, rgba(201, 162, 39, 0.12), transparent 50%),
+    linear-gradient(165deg, #B8D4F0 0%, #D6E8F8 25%, #EAF2FB 55%, #F5F9FF 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+.mesh-bg::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url('/nemsu-logo-watermark.png');
+  background-repeat: no-repeat;
+  background-position: center 45%;
+  background-size: min(68vw, 560px);
+}
+
+.brand-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 9999px;
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(11, 61, 145, 0.18), 0 0 0 2px rgba(201, 162, 39, 0.35);
+  overflow: hidden;
+}
+
+.brand-mark img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  background: linear-gradient(135deg, #0B3D91 0%, #1A6FBF 100%);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(11, 61, 145, 0.35);
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  background: transparent;
+  color: #475569;
+  border: 1px solid rgba(11, 61, 145, 0.18);
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+.btn-ghost:hover {
+  color: #0B3D91;
+  border-color: rgba(201, 162, 39, 0.5);
+  background: rgba(201, 162, 39, 0.08);
+}
+
+.input-field {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid rgba(11, 61, 145, 0.15);
+  color: #0f172a;
+  font-family: inherit;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: #1A6FBF;
+  box-shadow: 0 0 0 3px rgba(11, 61, 145, 0.12);
+}
+
+.input-field::placeholder { color: #94a3b8; }
+
+select.input-field { cursor: pointer; }
+
+.table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+table { width: 100%; border-collapse: collapse; }
+
+th {
+  text-align: left;
+  padding: 0.75rem 1rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #64748b;
+  border-bottom: 1px solid rgba(11, 61, 145, 0.1);
+}
+
+td {
+  padding: 0.875rem 1rem;
+  border-bottom: 1px solid rgba(11, 61, 145, 0.06);
+  font-size: 0.9rem;
+  color: #1e293b;
+}
+
+tr:hover td { background: rgba(11, 61, 145, 0.03); }
+
+.badge {
+  display: inline-block;
+  padding: 0.2rem 0.65rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.badge-pending { background: rgba(201, 162, 39, 0.15); color: #A8861A; }
+.badge-confirmed { background: rgba(26, 111, 191, 0.12); color: #1A6FBF; }
+.badge-completed { background: rgba(11, 61, 145, 0.12); color: #0B3D91; }
+.badge-cancelled { background: rgba(244, 63, 94, 0.12); color: #e11d48; }
+.badge-active { background: rgba(11, 61, 145, 0.12); color: #0B3D91; }
+.badge-sent { background: rgba(26, 111, 191, 0.12); color: #1A6FBF; }
+.badge-in_progress { background: rgba(26, 111, 191, 0.12); color: #1A6FBF; }
+.badge-low { background: rgba(11, 61, 145, 0.12); color: #0B3D91; }
+.badge-medium { background: rgba(201, 162, 39, 0.15); color: #A8861A; }
+.badge-high { background: rgba(251, 146, 60, 0.15); color: #ea580c; }
+.badge-emergency { background: rgba(244, 63, 94, 0.12); color: #e11d48; }
+
+/* Brand utility helpers for JSX */
+.text-brand { color: #0B3D91; }
+.text-gold { color: #C9A227; }
+.bg-brand { background-color: #0B3D91; }
+.bg-gold { background-color: #C9A227; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
